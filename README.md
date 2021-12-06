@@ -10,7 +10,7 @@ This is a discrete-event-simulation whole-disease model of asthma implemented in
 
 ## 1.0
 * The schematic illustration of the model is provided below:
-![Process Diagram](figures/model/asthma_model_diagram_April05_2021.png)
+![Process Diagram](figures/model/asthma_model_diagram_Oct_21_2021.png)
 * It is composed of the following components:
 	* [Conceptual framework](documentation/V1/conceptual_framework.md)
 	* [Simulation platform](documentation/V1/simulation_platform.md)
@@ -38,13 +38,11 @@ This is a discrete-event-simulation whole-disease model of asthma implemented in
     * Asthma severity
     * Asthma exacerbation
 * The process diagram is provided:
-![Process Diagram](figures/model/asthma_model_diagram_Jan07.png)
 
 ## Update [Jan 14 2021]
 * Antibiotic drug usage module has been added.
 * Setting the time window = 20 years, max age = 111, and n= 500,000, the current code takes about 15 sec to run for each year.
 * The process diagram has been updated accordingly:
-![Process Diagram](figures/model/asthma_model_diagram_Jan14_20.png)
 
 ## Update [Jan 22 2021]
 * A prototype modular framework has been implemented.
@@ -57,18 +55,16 @@ This is a discrete-event-simulation whole-disease model of asthma implemented in
 
 ## Update [Feb 17 2021]
 * Asthma control module is implemented.
-* The [control level plot](figures/Feb_17_2021/control.png) is obtained under the same simulation setting used for Milestone #1.
 
 ## Update [March 4 2021]
 * Asthma exacerbation module is implemented.
 
 ## Update [March 9 2021]
 * Asthma exacerbation module is re-implemented; exacerbation is treated as a count variable.
-* See the [plot of the exacerbation rates](figures/March_9_2021/exacerbation_rate.png).
 * The rate is little higher than expected; I expected it to be around 0.4.
 
 ## Update [April 5 2021]
-* The code has been re-structured in response to comments provided by two anonymous reviewers (see Issue [#2](/../../issues/2)).
+* The code has been re-structured in response to comments provided by two anonymous reviewers.
 
 ## Update [December 6 201]
 * The first version of the model is ready after calibration.
