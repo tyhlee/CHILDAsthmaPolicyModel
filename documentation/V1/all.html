@@ -1,0 +1,528 @@
+<!DOCTYPE html><html><head>
+      <title>V1-documentation</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="conceptual-framework">Conceptual framework</h1>
+
+<p>Similar to <a href="https://doi.org/10.1177/0272989X18824098">Evaluation Platform In COPD</a> and <a href="http://hdl.handle.net/2429/71051">Whole Diesase Modeling of Oral Cancer</a>, we follow the <a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=Whole+Disease+Modeling+to+Inform+Resource+Allocation+Decisions+in+Cancer%3A+A+Methodological+Framework&amp;btnG=">Whole Disease Modeling framework</a>, in which we model the <em>entire</em> course of the disease, from pre-clinical status through a variety of possible events including asthma incidence, asthma exacerbation, and death, and allow multiple decision nodes to interact with each other over time.</p>
+<p>To model the entire disease pathway, we closely followed the guidelines set by the ISPOR-SMDM Modeling Good Research Practices Task Force and used a concept map (Figure 1) developed by a steering committee of economic modelers, allergists, and respirologists across Canada through a modified Delphi process (details can be found <a href="https://www.medrxiv.org/content/10.1101/2020.12.15.20248275v2">here</a>).</p>
+<p><strong>Figure 1:</strong> Concept map of childhood asthma.<br>
+<img src="../../figures/concept/concept_map.png" alt="Conceptual Diagram"></p>
+<p>The CHILD asthma model is a microsimulation Markov model with an annual cycle (which was chosen in accordance with recommendations by the concept map committee and with our independent investigation of the optimal framework using the taxonomy and checklist provided by Brennan et al. (2010)). The overall feature of the CHILD asthma model is an open population model that simulates the life trajectory of Canadians from Year 2020 (or later) to future (e.g., Year 2065), including population growth, aging, immigration, and emigration. The core of the model can be conceptualized as a series of equations relating risk factors to each other (and to calendar time) and to events of interest (such as asthma incidence). The occurrence of events in turn can change the value of risk factors. The current version of the schematic illustration of the disease pathway focuses on antibiotic use as a risk factor of interest. Note that a module for asthma diagnosis has not been implemented yet, implying we assume that agents are diagnosed with asthma when they get asthma.</p>
+<p><strong>Figure 2:</strong> Schematic illustration of the CHILD model<br>
+<img src="../../figures/model/asthma_model_diagram_Oct_21_2021.png" alt="Process Diagram"></p>
+<h1 class="mume-header" id="simulation-platform">Simulation platform</h1>
+
+<p>We chose <strong>Julia</strong> as the main engine for running the model. We briefly discuss why Julia might be a better alternative than R and Python, which are the main programming languages that researchers use for health economic evaluation. Often, codes written purely in R or Python are inefficient and thus require use of C++ (via RCpp or Cython, respectively) or Fortran. Consequently, typical R or Python users would have difficulty with reading, interpreting, and modifying (usually very long and tedious) C++ codes, presenting a major obstacle towards making a reference model that can be easily understood, modified, and used. Julia is a relatively new open-source, high-level (like R and Python) programming language for high-performance computing (like C++), and thus solves the "2-language" paradigm. Julia codes can be often compact, quickly written, and easily interpretable. For more details, please see the <a href="https://giabaio.github.io/r-hta/lee/#/">slides</a> presented at the 2021 R for Health Technology Assessment workshop.</p>
+<p>For accessibility, we provided an interface to <a href="https://github.com/tyhlee/AsthmaR">R</a>.</p>
+<p>The code is publicly available and can be downloaded and run as a Julia or an R package. Detailed instructions are to be added.</p>
+<h1 class="mume-header" id="impact-of-covid-19">Impact of COVID-19</h1>
+
+<p>We are waiting for evidence on the impact of COVID-19 on the population growth and asthma. It will be incorporated into the model if it is deemed to be necessary in consultation with stakeholders.</p>
+<h1 class="mume-header" id="simulation-baseline-setting">Simulation baseline setting</h1>
+
+<p>There are six major input parameters:</p>
+<ul>
+<li>max_age: The maximum age of the agent.</li>
+<li>starting_year: the starting year of the simulation.</li>
+<li>time_horizon: the time window over which the agent lives.</li>
+<li>n: the baseline number of agents for the starting year. The subsequent number of agents depends on the population growth.</li>
+<li>population_growth_type: the population growth trajectory type defined by Statistics Canada.</li>
+<li>parameters: module parameters. See each of the modules for details.</li>
+</ul>
+<h1 class="mume-header" id="agent">Agent</h1>
+
+<p>Each agent has the following characteristics (<strong>Table 1</strong>).</p>
+<p><strong>Table 1:</strong> Agent characteristics.</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>biological sex</td>
+<td>Boolean</td>
+<td>true: male; false: female</td>
+</tr>
+<tr>
+<td>age</td>
+<td>Int</td>
+<td>0-111</td>
+</tr>
+<tr>
+<td>living status</td>
+<td>Boolean</td>
+<td>true: alive; false: dead</td>
+</tr>
+<tr>
+<td>number of antibiotics taken</td>
+<td>Int</td>
+<td>[0,∞)</td>
+</tr>
+<tr>
+<td>asthma status</td>
+<td>Boolean</td>
+<td>true: has asthma; false: does not asthma</td>
+</tr>
+<tr>
+<td>age of asthma diagnosis</td>
+<td>Int</td>
+<td>[0,111)</td>
+</tr>
+<tr>
+<td>asthma control (controlled, partially controlled, uncontrolled)</td>
+<td>Composition</td>
+<td>{(x,y,z): x,y,z&gt;0, x+y+z=1}</td>
+</tr>
+<tr>
+<td>past exacerbation history</td>
+<td>Vector of Int</td>
+<td>([0,∞),[0,∞)]</td>
+</tr>
+</tbody>
+</table>
+<h1 class="mume-header" id="demographic-module">Demographic module</h1>
+
+<p>The demographic module is consisted of initial population, birth, immigration, emigration and mortality. At the start of the simulation (default set to 2020), an initial population is generated. In subsequent years, agents enter the simulation through birth or immigration only, and exit the simulation when one of the following events occur: death, emigration, or the end of the time horizon.</p>
+<p><strong>Table 2:</strong> Input parameters for the demographic module</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Structure</th>
+<th>Source/Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Background mortality rate</td>
+<td>Death due to non-asthma reasons</td>
+<td>Canadian life table</td>
+<td>Statistics Canada</td>
+</tr>
+<tr>
+<td>Immigration rate</td>
+<td>Immigrants by age and sex</td>
+<td>Canadian immigration projection</td>
+<td>Statistics Canada</td>
+</tr>
+<tr>
+<td>Emigration rate</td>
+<td>Emigrants by age</td>
+<td>Canadian emigration projection</td>
+<td>Statistics Canada</td>
+</tr>
+<tr>
+<td>Birth rate</td>
+<td>Newborns by sex</td>
+<td>Canadian birth projection</td>
+<td>Statistics Canada</td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="initial-population">Initial population</h2>
+
+<p>The distribution of the initial population in terms of age and sex is based on the observed value for Year 2020 (Statistics Canada - 17100005). Due to lack of existing evidence and data, we used our own simulation to generate the empirical joint distribution of all the characteristics of an agent. Specifically, we generated 20 millions agents and followed them until death, with all the calendar effects (e.g., asthma incidence and antibiotic exposure) set to zero.</p>
+<h2 class="mume-header" id="birth">Birth</h2>
+
+<p>After the initialization of the population, agents enter the simulation via birth or immigration. The number of births by sex is based on the projection from Statistics Canada (combining two data sources: 17100057 and 17100058). Note that the sex ratio is more or less equal across the years (51.12% of males).</p>
+<h2 class="mume-header" id="immigration">Immigration</h2>
+
+<p>The number of immigrants is also based on the projection from Statistics Canada (Figure 5.4 in <a href="https://www150.statcan.gc.ca/n1/pub/91-620-x/2019001/chap05-eng.htm">https://www150.statcan.gc.ca/n1/pub/91-620-x/2019001/chap05-eng.htm</a>), and the sex and age distribution are based on the observed values for the period from 2010 to 2018 (Figure A5.2 in <a href="https://www150.statcan.gc.ca/n1/pub/91-620-x/2019001/chap05-eng.htm">https://www150.statcan.gc.ca/n1/pub/91-620-x/2019001/chap05-eng.htm</a>).</p>
+<p>Again due to lack of data on immigrants, we again use our own simulation to populate the agent characteristics for immigrants.</p>
+<h2 class="mume-header" id="emigration">Emigration</h2>
+
+<p>The number of emigrants is based on the projection from Statistics Canada (<a href="https://www150.statcan.gc.ca/n1/pub/91-620-x/2019001/chap06-eng.htm">https://www150.statcan.gc.ca/n1/pub/91-620-x/2019001/chap06-eng.htm</a>), and the age distribution is based on the observed value for 2011 (Chart 5 in <a href="https://www150.statcan.gc.ca/n1/pub/91f0015m/91f0015m2018001-eng.htm">https://www150.statcan.gc.ca/n1/pub/91f0015m/91f0015m2018001-eng.htm</a>). Due to the limited data, we assume that sex has no impact on emigration.</p>
+<h2 class="mume-header" id="mortality">Mortality</h2>
+
+<p>In the current version, morality rate is not differentiated between asthma patients and non-asthma patients. The mortality rate is based on the observed life table for 2018 in Canada (13100710). Projected life tables (i.e., increased life expectancy) are to be incorporated.</p>
+<h1 class="mume-header" id="riskexposure-module">Risk/Exposure module</h1>
+
+<p>We currently have one risk factor of interest: antibiotic use. We assume that an agent either receives antibiotics or not in each year, and its impact on asthma incidence is assumed to be in effect until the age of 11 years (it does not have impact on any other aspects). <strong>Table 2</strong> summarizes the input parameters.</p>
+<p><strong>Table 3:</strong> Input parameters for the risk/exposure module</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Structure</th>
+<th>Source/Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Antibiotic use</td>
+<td>Models whether an agent is prescribed antibiotics</td>
+<td><span class="mathjax-exps">$logit(p_{antibiotic\_drug})=\beta_{0,i} + \beta_{sex} \times sex + \beta_{age} \times age + \beta_{cal\_year} \times cal\_year,$</span> where <span class="mathjax-exps">$\beta_{i,0} \sim Normal(\mu_0,\sigma^2_0)$</span></td>
+<td>Patrick et al., Lancet Respiratory, 2020</td>
+</tr>
+</tbody>
+</table>
+<h1 class="mume-header" id="asthma-module">Asthma module</h1>
+
+<p>The asthma module consists of three components: asthma incidence, asthma control, and asthma exacerbation.</p>
+<p><strong>Table 4:</strong> Input parameters for the asthma module</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th>Structure</th>
+<th>Source/Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asthma incidence</td>
+<td>Assigns asthma status to agents who did not have asthma</td>
+<td><span class="mathjax-exps">$logit(p_i) = \beta_{0,i} + \beta_{sex} \times sex + \beta_{age} \times age + \beta_{sex,age} \times (sex * age) +\\ \beta_{cal\_year} \times cal\_year + \beta_{sex,cal\_year} \times sex * cal\_year + \beta_{CABE} \times (CABE * \mathbf{1}[age &lt; 11]), \mbox{where} \beta_{0,i} \sim Normal(\mu_0,\sigma^2_0)$</span></td>
+<td>Ontario and Patrick et al.</td>
+</tr>
+<tr>
+<td>Asthma control</td>
+<td>Assigns the proportion of time spent in year in each of the three control levels (set by the 2020 GINA guidelines) to agents with asthma</td>
+<td>a proportional ordinal regression based on sex, age, age of asthma diagnosis, control levels, and exacerbation history</td>
+<td>EBA</td>
+</tr>
+<tr>
+<td>Asthma exacerbation</td>
+<td>Assigns the number of exacerbations to agents with asthma</td>
+<td>Poisson(λ), where <span class="mathjax-exps">$\log(λ) = \beta_{0,i}+ \beta_{sex} \times sex + \beta_{age} \times age + \beta_{Dx} \times Dx + \beta_{prev\_exac} \times prev\_exac + \beta_{control} \times control, ~\beta_{0,i} \sim Normal(\mu_0,\sigma^2_0)$</span></td>
+<td>EBA and GOAL</td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="asthma-incidence">Asthma incidence</h2>
+
+<p>We used a logistic regression model to determine whether an agent without asthma gets asthma. The parameter estimates were obtained using the asthma incidence rates provided by SickKids, Toronto, Ontario, Canada (here is the <a href="https://lab.research.sickkids.ca/oasis/data-tables/">link</a>).<br>
+We used an estimate of the effect of antibiotic use from Patrick, et al., Lancet Respiratory, 2020. We assume that the effect was only present for age &lt; 11 years.</p>
+<h2 class="mume-header" id="asthma-control">Asthma control</h2>
+
+<p>We used a proportional ordinal logistic regression to estimate the proportion of time spent in each of the three control levels (set by the 2020 GINA guidelines) in a year using the Economic Burden of Asthma data. For details, see <a href="../../evidence/asthmaControlLevelAnalysis_Feb16_2021.html">here</a>.</p>
+<h2 class="mume-header" id="asthma-exacerbation">Asthma exacerbation</h2>
+
+<p>We used a Poisson regression to model the number of asthma exacerbations using the Economic Burden of Asthma study and the Gaining Asthma controL (GOAL) study to estimate the effects of sex, age, time since asthma diagnosis, asthma control, and previous asthma exacerbations. From the EBA study, we obtained the annual exacerbation rate, which was 0.347/year. Next, from the GOAL study, we obtained the probability of exacerbation given the control levels. Combining both, we obtained the unique rate of exacerbation given the control level. For details, see <a href="../../issues/3">here</a>.</p>
+<h1 class="mume-header" id="internal-validation-pre-calibration">Internal Validation: pre-calibration</h1>
+
+<p>The purpose of internal validation is to compare outcomes from the model with their a priori expected values. Any deviation might indicate a need for calibration.</p>
+<h2 class="mume-header" id="birth-1">Birth</h2>
+
+<p>The initial number of newborns was set to 100,000, and was set to change relative to the initial number based on the projection from Statistics Canada for subsequent years. The model output matches the initial value of 100,00 and appears to be correct (Figure 3). We check two more aspects for the birth module: proportion of sex, which was set to 0.51, and proportion of the newborns relative to the starting value across the years, which was assumed, on average, to follow the trajectory provided by Statistics Canada. Both aspects seem valid (Figures 4 and 5).</p>
+<p><strong>Figure 3.</strong> Number of newborns generated by the model across sex over the time horizon.<br>
+<img src="../../src/simulation_studies/V1/figures/demo_newborns.png" alt="Birth Raw"></p>
+<p><strong>Figure 4.</strong> Number of newborns generated by the model by sex over the time horizon. The black lines indicate the expected proportions.<br>
+<img src="../../src/simulation_studies/V1/figures/demo_nb_prop_sex.png" alt="Birth prop sex"></p>
+<p><strong>Figure 5.</strong> Proportion of newborns relative to the starting value in 2020 over the time horizon.<br>
+<img src="../../src/simulation_studies/V1/figures/demo_nb_prop_overall.png" alt="Birth prop overall"></p>
+<h2 class="mume-header" id="mortality-1">Mortality</h2>
+
+<p>The mortality rate is currently assumed to be equal over time but vary across sex and age. The observed and true mortality probabilities closely are aligned for each sex (Figure 6).</p>
+<p><strong>Figure 6.</strong> Mortality by sex and age.<br>
+<img src="../../src/simulation_studies/V1/figures/demo_death.png" alt="Death"></p>
+<h2 class="mume-header" id="population-pyramid">Population pyramid</h2>
+
+<p><strong>Figure 7.</strong> Population pyramid for selected years.<br>
+<img src="../../src/simulation_studies/V1/figures/demo_pop_pyramid.png" alt="Pop Pyramid"></p>
+<h2 class="mume-header" id="antibiotic-use">Antibiotic use</h2>
+
+<p>Expected to decrease<br>
+<img src="../../src/simulation_studies/V1/figures/ABE.png" alt="ABE"></p>
+<h2 class="mume-header" id="asthma-incidence-1">Asthma incidence</h2>
+
+<p>Expected to decrease<br>
+<img src="../../src/simulation_studies/V1/figures/asthma_inc.png" alt="asthma_inc"></p>
+<h2 class="mume-header" id="asthma-prevalence">Asthma prevalence</h2>
+
+<p>Expected to decrease<br>
+<img src="../../src/simulation_studies/V1/figures/asthma_prev.png" alt="asthma_prev"></p>
+<h2 class="mume-header" id="asthma-exacerbation-1">Asthma exacerbation</h2>
+
+<p>black: observed; red: true<br>
+<img src="../../src/simulation_studies/V1/figures/asthma_exac.png" alt="asthma_exac"></p>
+<h2 class="mume-header" id="asthma-control-1">Asthma control</h2>
+
+<p>Solid: observed; dotted: true<br>
+<img src="../../src/simulation_studies/V1/figures/asthma_control.png" alt="asthma_control"></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
