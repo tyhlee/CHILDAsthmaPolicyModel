@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.com/tyhlee/Asthma_Julia.jl.svg?branch=master)](https://travis-ci.com/tyhlee/Asthma_Julia.jl)
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/tyhlee/Asthma_Julia.jl?svg=true)](https://ci.appveyor.com/project/tyhlee/Asthma_Julia-jl)
-[![Coverage](https://codecov.io/gh/tyhlee/Asthma_Julia.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/tyhlee/Asthma_Julia.jl)
-[![Coverage](https://coveralls.io/repos/github/tyhlee/Asthma_Julia.jl/badge.svg?branch=master)](https://coveralls.io/github/tyhlee/Asthma_Julia.jl?branch=master)
+[![Build Status](https://travis-ci.com/tyhlee/CHILDAsthmaPolicyModel.jl.svg?branch=master)](https://travis-ci.com/tyhlee/CHILDAsthmaPolicyModel.jl)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/tyhlee/CHILDAsthmaPolicyModel.jl?svg=true)](https://ci.appveyor.com/project/tyhlee/CHILDAsthmaPolicyModel-jl)
+[![Coverage](https://codecov.io/gh/tyhlee/CHILDAsthmaPolicyModel.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/tyhlee/CHILDAsthmaPolicyModel.jl)
+[![Coverage](https://coveralls.io/repos/github/tyhlee/CHILDAsthmaPolicyModel.jl/badge.svg?branch=master)](https://coveralls.io/github/tyhlee/CHILDAsthmaPolicyModel.jl?branch=master)
 
 # Overview
 This is a discrete-event-simulation whole-disease model of asthma implemented in Julia. It is the back-bone of the [R package](https://github.com/tyhlee/AsthmaR), which is a wrapper of the Julia package for R.
