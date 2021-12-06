@@ -69,3 +69,6 @@ This is a discrete-event-simulation whole-disease model of asthma implemented in
 
 ## Update [April 5 2021]
 * The code has been re-structured in response to comments provided by two anonymous reviewers (see Issue [#2](/../../issues/2)).
+
+## Update [December 6 201]
+* The first version of the model is ready after calibration.
