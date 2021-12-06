@@ -6,6 +6,8 @@
 # Overview
 This is a discrete-event-simulation whole-disease model of asthma implemented in Julia. It is the back-bone of the [R package](https://github.com/tyhlee/AsthmaR), which is a wrapper of the Julia package for R.
 
+The current version should not be used for any application yet.
+
 # Version
 
 ## 1.0
